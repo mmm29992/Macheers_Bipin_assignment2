@@ -1,0 +1,14 @@
+import DoublyLinkedList;
+import NodeType;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
+
+    public static final char GET_NEXT = 'n';
+    public static final char RESET_LIST = 'r';
+    public static final char DEL_ALT = 'a';
+    public static final char MERGE = 'm';
+    public static final char INTERSECTION = 't';
+    public static final char QUIT = 'q';
+}
