@@ -1,6 +1,5 @@
 import java.util.NoSuchElementException;
 
-import NodeType;
 
 public class DoublyLinkedList<T extends Comparable<T>> {
     private NodeType<T> head;
@@ -70,8 +69,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     {
         NodeType<T> temp = searchItem(item);
       
-        // deleteing the first item 
-        if (temp.back == null) 
+        if (length() == 1)
+        {
+            head = null; 
+} else if (temp.back == null)  // deleting the first item
         {
             NodeType<T> front = temp.next;
             front.back = null;
@@ -99,12 +100,14 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     public NodeType<T> searchItem(T item) 
     {
         NodeType<T> temp = head;
-        if (temp.info.compareTo(item) != 0 && temp.next != null) {
-            temp = temp.next;
-        } else if ((temp.info.compareTo(item) != 0) && temp.next == null) {
-            throw new NoSuchElementException("Item not found");
-        } else {
-            return temp;
+        while (temp != null) {
+            if (temp.info.compareTo(item) != 0 && temp.next != null) {
+                temp = temp.next;
+            } else if ((temp.info.compareTo(item) != 0) && temp.next == null) {
+                throw new NoSuchElementException("Item not found");
+            } else {
+                return temp;
+            }
         }
         return temp;
     }
@@ -171,13 +174,16 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     public void deleteSubsection(T upperBound, T lowerBound) 
     {
         NodeType<T> temp = head;
-        while (temp != null)
-        {
-            if ((temp.info.compareTo(lowerBound) >= 0) || temp.info.compareTo(upperBound) <= 0 )
-            {
+        while (temp != null) {
+            if ((temp.info.compareTo(lowerBound) >= 0) || temp.info.compareTo(upperBound) <= 0) {
                 deleteItem(temp.info);
             }
-            temp = temp.next; 
+            temp = temp.next;
         }
+    }
+    
+    public void reverseList()
+    {
+
     }
 }
