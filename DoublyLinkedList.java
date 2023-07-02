@@ -19,6 +19,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         head = null;
     }
 
+    /**
+     * Inserts an item into the linked list in its sorted position.
+     * 
+     * @param item the item to be inserted 
+     */
     public void insertItem(T item) {
         NodeType<T> newNode = new NodeType<>();
         NodeType<T> temp = head;
@@ -55,11 +60,28 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
     }
 
+    /**
+     * Deletes the specified item from the linked list 
+     * 
+     * @param item the item to be deleted 
+     * @throws NoSuchElementException if the item is not found in the linked list.
+     */
     public void deleteItem(T item) 
     {
-        NodeType<T> temp = searchItem(item); 
+        NodeType<T> temp = searchItem(item);
+        NodeType<T> front = temp.next;
+        NodeType<T> back = temp.back;
+        back.next = front;
+        front.back = back; 
     }
 
+    /**
+     * Searches for an item in the linked list
+     * 
+     * @param item the item is searcing for 
+     * @return the node containing the item if found \
+     * @throws NoSuchElementException if the item is not found in the linked list. 
+     */
     public NodeType<T> searchItem(T item) 
     {
         NodeType<T> temp = head;
