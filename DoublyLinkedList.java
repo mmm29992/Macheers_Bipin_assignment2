@@ -32,7 +32,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             newNode.next = head;
             head.back = newNode;
             head = newNode;
-        } else  // insert in the middle
+        } else  // insert in the midd
         {
 while (item.compareTo(temp.info) > 0)
 {
