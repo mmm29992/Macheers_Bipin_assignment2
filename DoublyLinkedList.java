@@ -134,10 +134,30 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     public void print()
     {
         NodeType<T> temp = head;
-        while (temp != null)
-        {
+        while (temp != null) {
             System.out.print(temp.info + " ");
             temp = temp.next;
+        }
+        System.out.println();
+    }
+    
+    /**
+     * Prints the elements of the linked list in reverse order to the console.
+     * The elements are seperated by a space and are printed in reverse order compared
+     * to their original order in the list.
+     * A line brealk is added after printing all the elements.
+     */
+    public void printReverse() 
+    {
+        NodeType<T> temp = head;
+        while (temp.next != null)
+        {
+            temp = temp.next;
+        }
+        while (temp != null) 
+        {
+            System.out.print(temp.info + " ");
+            temp = temp.back;
         }
         System.out.println();
     }
