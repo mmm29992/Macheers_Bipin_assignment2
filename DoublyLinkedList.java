@@ -116,13 +116,29 @@ public class DoublyLinkedList<T extends Comparable<T>> {
      */
     public int length() 
     {
-        int count = 0; 
+        int count = 0;
         NodeType<T> temp = head;
-        while (temp.next != null)
-        {
+        while (temp.next != null) {
             temp = temp.next;
             count++;
         }
-        return count; 
+        return count;
+    }
+    
+    /**
+     * Prints the elements of the linked list to the console.
+     * The elements are seperated by a spaced and are printed in the order
+     * they appear in the list.
+     * A line break is added after printing out all the elements. 
+     */
+    public void print()
+    {
+        NodeType<T> temp = head;
+        while (temp != null)
+        {
+            System.out.print(temp.info + " ");
+            temp = temp.next;
+        }
+        System.out.println();
     }
 }
