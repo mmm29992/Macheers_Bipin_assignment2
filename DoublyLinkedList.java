@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 import NodeType;
 
 public class DoublyLinkedList<T extends Comparable<T>> {
@@ -17,49 +19,58 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         head = null;
     }
 
-    public void insertItem( T item) 
-    {
+    public void insertItem(T item) {
         NodeType<T> newNode = new NodeType<>();
         NodeType<T> temp = head;
         newNode.info = item;
 
         // if list is empty
-        if (head == null) 
-        {
+        if (head == null) {
             head = newNode;
-        } else if (newNode.info.compareTo(head.info) < 0)   // insert at the beginning 
+        } else if (newNode.info.compareTo(head.info) < 0) // insert at the beginning 
         {
             newNode.next = head;
             head.back = newNode;
             head = newNode;
-        } else  // insert in the midd
+        } else // insert in the midd
         {
-while (item.compareTo(temp.info) > 0)
-{
-    if (temp.next != null) {
-        temp = temp.next;
-    } else
-        break;
-}
-if ( temp.next == null && newNode.info.compareTo(temp.info) > 0)
-{
-    temp.next = newNode;
-    newNode.back = temp;
-} else 
-{
-    NodeType<T> back = temp.back;
-    newNode.next = temp;
-    temp.back = newNode;
-    newNode.back = back;
-    back.next = newNode;
-}
+            while (item.compareTo(temp.info) > 0) {
+                if (temp.next != null) {
+                    temp = temp.next;
+                } else
+                    break;
+            }
+            if (temp.next == null && newNode.info.compareTo(temp.info) > 0) {
+                temp.next = newNode;
+                newNode.back = temp;
+            } else {
+                NodeType<T> back = temp.back;
+                newNode.next = temp;
+                temp.back = newNode;
+                newNode.back = back;
+                back.next = newNode;
+            }
 
         }
 
-       
-        
-
-
     }
 
+    public void deleteItem(T item) 
+    {
+        NodeType<T> temp = searchItem(item); 
+    }
+
+    public NodeType<T> searchItem(T item) 
+    {
+        NodeType<T> temp = head;
+        if (temp.info.compareTo(item) != 0 && temp.next != null) {
+            temp = temp.next;
+        } else if (temp.next == null) {
+            throw new NoSuchElementException("Item not found");
+        } else
+        {
+            return temp;
+        }
+        return temp;
+    }
 }
