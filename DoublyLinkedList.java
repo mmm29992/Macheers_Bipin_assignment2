@@ -69,10 +69,24 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     public void deleteItem(T item) 
     {
         NodeType<T> temp = searchItem(item);
-        NodeType<T> front = temp.next;
-        NodeType<T> back = temp.back;
-        back.next = front;
-        front.back = back; 
+      
+        // deleteing the first item 
+        if (temp.back == null) 
+        {
+            NodeType<T> front = temp.next;
+            front.back = null;
+            head = front; 
+        } else if ( temp.next == null) // delete last item
+        {
+            NodeType<T> back = temp.back;
+            back.next = null; 
+        } else // delete in the middle
+        {
+            NodeType<T> front = temp.next;
+            NodeType<T> back = temp.back;
+            front.back = back;
+            back.next = front; 
+        }
     }
 
     /**
@@ -87,7 +101,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         NodeType<T> temp = head;
         if (temp.info.compareTo(item) != 0 && temp.next != null) {
             temp = temp.next;
-        } else if (temp.next == null) {
+        } else if ((temp.info.compareTo(item) != 0) && temp.next == null) {
             throw new NoSuchElementException("Item not found");
         } else {
             return temp;
@@ -95,6 +109,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         return temp;
     }
     
+    /**
+     *  Returns the number of elements in the linked list
+     * 
+     * @return the number of elements in the linked list 
+     */
     public int length() 
     {
         int count = 0; 
