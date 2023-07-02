@@ -150,15 +150,34 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     public void printReverse() 
     {
         NodeType<T> temp = head;
-        while (temp.next != null)
-        {
+        while (temp.next != null) {
             temp = temp.next;
         }
-        while (temp != null) 
-        {
+        while (temp != null) {
             System.out.print(temp.info + " ");
             temp = temp.back;
         }
         System.out.println();
+    }
+    
+    /**
+     * This function will take input from the user fro the lower
+     * and upper bound (both inclusive) for a range of values that
+     * you will delete from the list.
+     * 
+     * @param upperBound
+     * @param lowerBound
+     */
+    public void deleteSubsection(T upperBound, T lowerBound) 
+    {
+        NodeType<T> temp = head;
+        while (temp != null)
+        {
+            if ((temp.info.compareTo(lowerBound) >= 0) || temp.info.compareTo(upperBound) <= 0 )
+            {
+                deleteItem(temp.info);
+            }
+            temp = temp.next; 
+        }
     }
 }
