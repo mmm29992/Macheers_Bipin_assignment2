@@ -72,9 +72,9 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
             }
         }
 
-        //Bipasha Bipin - Beginning of implementing how to accept file in command line
+        //Bipasha Bipin - beginning of implementing how to accept file in command line
         String inputFile = args[0];
-        // Creating the scanner to read the file
+        // creating the scanner to read the file
         Scanner scanFile = null;
         try {
             File listFile = new File(inputFile);
@@ -83,21 +83,168 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
             System.out.println("File not found.");
             return;
         }
-        // Putting the list from file into DoublyLinkedList
+        // putting the list from file into DoublyLinkedList
         while (scanFile.hasNext) {
-            int fileItems = scanFile.nextInt();
-            T itemTypeValue = new T(fileItems);
-            driver.list.insertItem(itemTypeValue);
+            String fileItems = scanFile.next();
+            T itemTypeValue;
+            if (driver.list.insertItem(itemTypeValue);
         }
-        // End of accepting the file
+        // end of accepting the file
 
-                System.out.println("Commands:");
-                System.out.println("(i) - Insert value");
-                System.out.println("(d) - Delete value");
-                System.out.println("(p) - Print list");
-                System.out.println("(l) - Length");
-                System.out.println("(t) - Print reverse");
-                System.out.println("(r) - Reverse list");
-                System.out.println("(b) - Delete Subsection");
-                System.out.println("(s) - Swap Alternate");
-                System.out.println("(q) - Quit program");
+        System.out.println("Commands:");
+        System.out.println("(i) - Insert value");
+        System.out.println("(d) - Delete value");
+        System.out.println("(p) - Print list");
+        System.out.println("(l) - Length");
+        System.out.println("(t) - Print reverse");
+        System.out.println("(r) - Reverse list");
+        System.out.println("(b) - Delete Subsection");
+        System.out.println("(s) - Swap Alternate");
+        System.out.println("(q) - Quit program");
+
+
+        System.out.print("Enter a command: ");
+        String inputCommand = scanner.nextLine();
+        T itemType = null;
+        //while loop
+        while (!inputCommand.equals("" + QUIT)) {
+            boolean correctCommand = true;
+            switch (inputCommand) {
+                //i command
+            case "" + INSERT:
+                System.out.print("Enter a number to insert: ");
+                String inputValue = scanner.nextLine();
+
+                if (itemtype = new DoublyLinkedList<T>(number);
+                System.out.print("Original list: ");
+                list.printList();
+                try {
+                    list.insertItem(itemtype);
+                } catch (Exception e) {
+                    System.out.println("Sorry. You cannot insert the duplicate item");
+                }
+                System.out.print("New list: ");
+                list.printList();
+                break;
+
+                //d command
+            case "" + DELETE:
+                System.out.print("Enter a number to delete: ");
+                itemtype = new ItemType(Integer.parseInt(scanner.nextLine()));
+                if (list.getLength() == 0) {
+                    System.out.println("You cannot delete from an empty list");
+                } else {
+                    System.out.print("Original list: ");
+                    list.printList();
+                    list.deleteItem(itemtype);
+                    System.out.print("New list: ");
+                    list.printList();
+                }
+                break;
+
+                //s command
+            case "" + SEARCH:
+                System.out.print("Enter a number to search: ");
+                itemtype = new ItemType(Integer.parseInt(scanner.nextLine()));
+                System.out.print("Original list: ");
+                list.printList();
+                if (list.getLength() == 0) {
+                    System.out.println("The list is empty");
+                } else if (list.searchItem(itemtype) == -1) {
+                    System.out.println("Item is not present in the list");
+                } else {
+                    System.out.println("The item is present at index " + list.searchItem(itemtype));
+                }
+                break;
+                //n command
+            case "" + GET_NEXT:
+                list.getNextItem();
+                break;
+
+                //r command
+            case "" + RESET_LIST:
+                list.resetList();
+                System.out.println("Iterator is reset");
+                break;
+
+                //a command
+            case "" + DEL_ALT:
+                System.out.print("Original list: ");
+                list.printList();
+                newList = list.deleteAlternateNodes(list);
+                System.out.print("New list: ");
+                newList.printList();
+                break;
+
+                //m command
+            case "" + MERGE:
+                System.out.print("Enter the length of the new list: ");
+                int length = scanner.nextInt();
+                System.out.print("Enter the numbers: ");
+                SortedLinkedList mergeList = new SortedLinkedList();
+                for (int i = 0; i < length; i++) {
+                    mergeList.insertItem(new ItemType(scanner.nextInt()));
+                }
+
+                System.out.print("The list 1: ");
+                list.printList();
+                System.out.print("The list 2: ");
+                mergeList.printList();
+                mergeList = list.mergeList(list, mergeList);
+                System.out.print("Merged list: ");
+                mergeList.printList();
+                scanner.nextLine();
+                break;
+
+                //t command
+            case "" + INTERSECTION:
+                System.out.print("Enter the length of the new list: ");
+                int numLength = scanner.nextInt();
+                System.out.print("Enter the numbers: ");
+                newList = new SortedLinkedList();
+                for (int i = 0; i < numLength; i++) {
+                    newList.insertItem(new ItemType(scanner.nextInt()));
+                }
+                System.out.print("The list 1: ");
+                list.printList();
+                System.out.print("The list 2: ");
+                newList.printList();
+                System.out.print("Intersection of lists: ");
+                SortedLinkedList intersectionList = list.intersection(list, newList);
+                intersectionList.printList();
+                scanner.nextLine();
+                break;
+                //p command
+            case "" + PRINT_ALL:
+                System.out.print("The list is: ");
+                list.printList();
+                break;
+
+                //l command
+            case "" + LENGTH:
+                System.out.print("The length of the list is " + list.getLength() + "\n");
+                break;
+
+                //q command
+            case "" + QUIT:
+                System.out.println("Exiting the program...");
+                break;
+
+            default:
+                //command is not valid
+                correctCommand = false;
+                break;
+            }
+
+            if (correctCommand) {
+                System.out.print("Enter a command: ");
+            } else {
+                System.out.print("Invalid command try again: ");
+            }
+            inputCommand = scanner.nextLine();
+            if (inputCommand.equals("" + QUIT)) {
+                System.out.println("Exiting the program...");
+            }//if
+        } // while
+    }
+}
