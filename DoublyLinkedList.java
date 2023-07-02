@@ -89,10 +89,21 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             temp = temp.next;
         } else if (temp.next == null) {
             throw new NoSuchElementException("Item not found");
-        } else
-        {
+        } else {
             return temp;
         }
         return temp;
+    }
+    
+    public int length() 
+    {
+        int count = 0; 
+        NodeType<T> temp = head;
+        while (temp.next != null)
+        {
+            temp = temp.next;
+            count++;
+        }
+        return count; 
     }
 }
