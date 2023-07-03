@@ -45,20 +45,114 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
                 while (true) {
                     if (inputListType.equals("" + INT)) {
                         DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
-                        processCommands(list);
+
+                        while (true) {
+                            System.out.println("Commands:\n");
+                            System.out.println("(i) - Insert value");
+                            System.out.println("(d) - Delete value");
+                            System.out.println("(p) - Print list");
+                            System.out.println("(l) - Length");
+                            System.out.println("(t) - Print reverse");
+                            System.out.println("(r) - Reverse list");
+                            System.out.println("(b) - Delete Subsection");
+                            System.out.println("(s) - Swap Alternate");
+                            System.out.println("(q) - Quit program");
+
+                            System.out.print("Enter a command: ");
+                            String inputCommand = inputScanner.nextLine();
+
+                            while (!inputCommand.equals("q")) {
+                                boolean correctCommand = true;
+                                switch (inputCommand) {
+                                case "i":
+                                    System.out.print("The list is: ");
+                                    list.print();
+                                    System.out.print("Enter a value to insert: ");
+                                    Integer inputValue = inputScanner.nextInt();
+                                    list.insertItem(inputValue);
+                                    System.out.print("The list is: ");
+                                    list.print();
+                                    System.out.print("The reverse list: ");
+                                    list.printReverse();
+                                    break;
+                                }
+                            }
+                        }
                         break;
                     } else if (inputListType.equals("" + DOUBLE)) {
                         DoublyLinkedList<Double> list = new DoublyLinkedList<Double>();
                         while (fileScanner.hasNextLine()) {
                             String line = fileScanner.nextLine();
-                            processCommands(list);
+                            while (true) {
+                                System.out.println("Commands:\n");
+                                System.out.println("(i) - Insert value");
+                                System.out.println("(d) - Delete value");
+                                System.out.println("(p) - Print list");
+                                System.out.println("(l) - Length");
+                                System.out.println("(t) - Print reverse");
+                                System.out.println("(r) - Reverse list");
+                                System.out.println("(b) - Delete Subsection");
+                                System.out.println("(s) - Swap Alternate");
+                                System.out.println("(q) - Quit program");
+
+                                System.out.print("Enter a command: ");
+                                String inputCommand = inputScanner.nextLine();
+
+                                while (!inputCommand.equals("q")) {
+                                    boolean correctCommand = true;
+                                    switch (inputCommand) {
+                                    case "i":
+                                        System.out.print("The list is: ");
+                                        list.print();
+                                        System.out.print("Enter a value to insert: ");
+                                        Double inputValue = inputScanner.nextLine();
+                                        list.insertItem(inputValue);
+                                        System.out.print("The list is: ");
+                                        list.print();
+                                        System.out.print("The reverse list: ");
+                                        list.printReverse();
+                                        break;
+                                    }
+                                }
+                            }
                             break;
                         }
                     } else if (inputListType.equals("" + STRING)) {
                         DoublyLinkedList<String> list = new DoublyLinkedList<String>();
                         while (fileScanner.hasNextLine()) {
                             String line = fileScanner.nextLine();
-                            processCommands(list);
+                            while (true) {
+                                System.out.println("Commands:\n");
+                                System.out.println("(i) - Insert value");
+                                System.out.println("(d) - Delete value");
+                                System.out.println("(p) - Print list");
+                                System.out.println("(l) - Length");
+                                System.out.println("(t) - Print reverse");
+                                System.out.println("(r) - Reverse list");
+                                System.out.println("(b) - Delete Subsection");
+                                System.out.println("(s) - Swap Alternate");
+                                System.out.println("(q) - Quit program");
+
+                                System.out.print("Enter a command: ");
+                                String inputCommand = inputScanner.nextLine();
+
+                                while (!inputCommand.equals("q")) {
+                                    boolean correctCommand = true;
+                                    switch (inputCommand) {
+                                    case "i":
+                                        System.out.print("The list is: ");
+                                        list.print();
+                                        System.out.print("Enter a value to insert: ");
+                                        String inputValue = inputScanner.nextLine();
+                                        list.insertItem(inputValue);
+                                        System.out.print("The list is: ");
+                                        list.print();
+                                        System.out.print("The reverse list: ");
+                                        list.printReverse();
+                                        break;
+                                    }
+                                }
+                            }
                             break;
                         }
                     } else {
@@ -76,42 +170,7 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
         }
 
     }
-    private static <T> void processCommands(DoublyLinkedList<T> list) {
-        Scanner inputScanner = new Scanner(System.in);
 
-        while (true) {
-            System.out.println("Commands:\n");
-            System.out.println("(i) - Insert value");
-            System.out.println("(d) - Delete value");
-            System.out.println("(p) - Print list");
-            System.out.println("(l) - Length");
-            System.out.println("(t) - Print reverse");
-            System.out.println("(r) - Reverse list");
-            System.out.println("(b) - Delete Subsection");
-            System.out.println("(s) - Swap Alternate");
-            System.out.println("(q) - Quit program");
-
-            System.out.print("Enter a command: ");
-            String inputCommand = inputScanner.nextLine();
-
-            while (!inputCommand.equals("" + QUIT)) {
-                boolean correctCommand = true;
-                switch (inputCommand) {
-                case "i":
-                    System.out.print("The list is: ");
-                    list.print();
-                    System.out.print("Enter a value to insert: ");
-                    T inputValue = inputScanner.nextLine();
-                    list.insertItem(inputValue);
-                    System.out.print("The list is: ");
-                    list.print();
-                    System.out.print("The reverse list: ");
-                    list.printReverse();
-                    break;
-                }
-            }
-        }
-    }
         /*       if (inputCommand.equals("" + QUIT)) {
                 System.out.println("Program quitting...");
                 return;
