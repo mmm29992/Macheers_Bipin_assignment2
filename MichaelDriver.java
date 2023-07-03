@@ -48,23 +48,55 @@ public class MichaelDriver<T extends Comparable<T>> {
             Scanner inputScanner = new Scanner(System.in);
             String dataType = inputScanner.nextLine();
 
-
-            System.out.print("Enter a command");
-            String inputCommand = scanner.nextLine();
-
+            String inputCommand = "";
             while (!inputCommand.equals("" + QUIT)) 
             {
                 boolean correctCommand = true;
-                switch (dataType) 
-                {
+                switch (dataType) {
                     case "" + INT:
                         DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
                         while (scanFile.hasNext()) {
                             int fileItems = scanFile.nextInt();
                             list.insertItem(fileItems);
+                            
 
                         }
+                        switch (inputCommand) {
+                            case "" + PRINT:
+                                System.out.print("The list is: ");
+                                list.print();
+                                break;
+                                
+                            case "" + PRINT_REV:
+                                System.out.print("The reverse list: ");
+                                list.printReverse();
+                            
+                        }
+                        break;
 
+                }
+                if (correctCommand)
+                {
+                    System.out.println("Commands:\n");
+                            System.out.println("(i) - Insert value");
+                            System.out.println("(d) - Delete value");
+                            System.out.println("(p) - Print list");
+                            System.out.println("(l) - Length");
+                            System.out.println("(t) - Print reverse");
+                            System.out.println("(r) - Reverse list");
+                            System.out.println("(b) - Delete Subsection");
+                            System.out.println("(s) - Swap Alternate");
+                            System.out.println("(q) - Quit program");
+                    System.out.print("Enter a command: ");
+                    inputCommand = scanner.nextLine();
+                } else 
+                {
+                    System.out.print("Invalid command try again: ");
+                }
+                inputCommand = scanner.nextLine();
+                if (inputCommand.equals("" + QUIT)) 
+                {
+                    System.out.println("Exiting the program...");
                 }
             }
 
