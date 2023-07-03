@@ -121,7 +121,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     {
         int count = 0;
         NodeType<T> temp = head;
-        while (temp.next != null) {
+        while (temp != null) {
             temp = temp.next;
             count++;
         }

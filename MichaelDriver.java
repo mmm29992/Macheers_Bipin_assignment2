@@ -70,6 +70,10 @@ public class MichaelDriver<T extends Comparable<T>> {
                             case "" + PRINT_REV:
                                 System.out.print("The reverse list: ");
                                 list.printReverse();
+                                break;
+                            case "" + LENGTH:
+                                System.out.println("The length of the list is " + list.length());
+                                break; 
                             
                         }
                         break;
