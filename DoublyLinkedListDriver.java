@@ -76,7 +76,7 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
         }
 
     }
-    private static <T> void processCommands(DoublyLinkedList<T> list) {
+    private void processCommands(DoublyLinkedList<T> list) {
         Scanner inputScanner = new Scanner(System.in);
 
         while (true) {
