@@ -170,6 +170,11 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
         }
 
     }
+<<<<<<< HEAD
+=======
+    private void processCommands(DoublyLinkedList<T> list) {
+        Scanner inputScanner = new Scanner(System.in);
+>>>>>>> 876a4e05ffca2e4e7739e0e59b1e24b5486d528f
 
         /*       if (inputCommand.equals("" + QUIT)) {
                 System.out.println("Program quitting...");

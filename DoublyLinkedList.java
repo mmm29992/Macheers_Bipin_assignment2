@@ -1,5 +1,7 @@
 import java.util.NoSuchElementException;
 
+import org.w3c.dom.Node;
+
 
 public class DoublyLinkedList<T extends Comparable<T>> {
     private NodeType<T> head;
@@ -183,6 +185,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     }
     
     public void reverseList()
+    {
+
+    }
+
+    public void swapAlternate() 
     {
 
     }
