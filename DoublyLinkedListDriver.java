@@ -1,6 +1,4 @@
 
-import NodeType;
-import DoublyLinkedList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,87 +23,102 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
     public static final char DOUBLE = 'd';
     public static final char STRING = 's';
 
-    private DoublyLinkedList<T> list;
-
-    public DoublyLinkedListDriver(DoublyLinkedList<T> list) {
-        this.list = list;
-    }
-
     /**
      * Start of main method.
      */
     public static void main (String[] args) {
 
-        DoublyLinkedListDriver<T> driver = new DoublyLinkedListDriver<T>(null);
+        // Check if a command-line argument was provided
+        if (args.length > 0) {
+            String filename = args[0]; // Get the filename from the first command-line argument
 
-        Scanner scanner = new Scanner(System.in);
+            // Read the file
+            try {
+                File file = new File(filename);
+                Scanner fileScanner = new Scanner(file);
 
-        //Bipasha Bipin - starting to prompt user for list type
+            // Prompt user for list type
+                System.out.print("Enter list type (i - int, d - double, s - string): ");
+                Scanner inputScanner = new Scanner(System.in);
+                String inputListType = inputScanner.nextLine();
+
+                while (true) {
+                    if (inputListType.equals("" + INT)) {
+                        DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
+                        processCommands(list);
+                        break;
+                    } else if (inputListType.equals("" + DOUBLE)) {
+                        DoublyLinkedList<Double> list = new DoublyLinkedList<Double>();
+                        while (fileScanner.hasNextLine()) {
+                            String line = fileScanner.nextLine();
+                            processCommands(list);
+                            break;
+                        }
+                    } else if (inputListType.equals("" + STRING)) {
+                        DoublyLinkedList<String> list = new DoublyLinkedList<String>();
+                        while (fileScanner.hasNextLine()) {
+                            String line = fileScanner.nextLine();
+                            processCommands(list);
+                            break;
+                        }
+                    } else {
+                        System.out.println("Invalid list type. Please try again.");
+                        inputListType = inputScanner.nextLine();
+                    }
+
+                }
+
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found: " + filename);
+            }
+        } else {
+            System.out.println("No file specified.");
+        }
+
+    }
+    private static <T> void processCommands(DoublyLinkedList<T> list) {
+        Scanner inputScanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Enter list type (i - int, d - double, s - string)");
-            String inputListType = scanner.nextLine();
+            System.out.println("Commands:\n");
+            System.out.println("(i) - Insert value");
+            System.out.println("(d) - Delete value");
+            System.out.println("(p) - Print list");
+            System.out.println("(l) - Length");
+            System.out.println("(t) - Print reverse");
+            System.out.println("(r) - Reverse list");
+            System.out.println("(b) - Delete Subsection");
+            System.out.println("(s) - Swap Alternate");
+            System.out.println("(q) - Quit program");
 
-            if (inputListType.equals("" + INT)) {
-                driver.list = new DoublyLinkedList<Integer>();
-                break;
-            } else if (inputListType.equals("" + DOUBLE)) {
-                driver.list = new DoublyLinkedList<Double>();
-                break;
-            } else if (inputListType.equals("" + STRING)) {
-                driver.list = new DoublyLinkedList<String>();
-                break;
-            } else {
-                System.out.println("Invalid list type. Try again.");
+            System.out.print("Enter a command: ");
+            String inputCommand = inputScanner.nextLine();
+
+            while (!inputCommand.equals("" + QUIT)) {
+                boolean correctCommand = true;
+                switch (inputCommand) {
+                case "i":
+                    System.out.print("The list is: ");
+                    list.print();
+                    System.out.print("Enter a value to insert: ");
+                    T inputValue = inputScanner.nextLine();
+                    list.insertItem(inputValue);
+                    System.out.print("The list is: ");
+                    list.print();
+                    System.out.print("The reverse list: ");
+                    list.printReverse();
+                    break;
+                }
             }
-            // Check conditions and return if necessary
-            if (driver.list == null) {
-                System.out.println("Failed to create list.");
-                scanner.close();
+        }
+    }
+        /*       if (inputCommand.equals("" + QUIT)) {
+                System.out.println("Program quitting...");
                 return;
             }
-
-            if (args.length == 0) {
-                System.out.println("Please give an input file.");
-                scanner.close();
-                return;
-            }
         }
+    }
 
-        //Bipasha Bipin - beginning of implementing how to accept file in command line
-        String inputFile = args[0];
-        // creating the scanner to read the file
-        Scanner scanFile = null;
-        try {
-            File listFile = new File(inputFile);
-            scanFile = new Scanner(listFile);
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
-            return;
-        }
-        // putting the list from file into DoublyLinkedList
-        while (scanFile.hasNext) {
-            String fileItems = scanFile.next();
-            T itemTypeValue;
-            if (driver.list.insertItem(itemTypeValue);
-        }
-        // end of accepting the file
-
-        System.out.println("Commands:");
-        System.out.println("(i) - Insert value");
-        System.out.println("(d) - Delete value");
-        System.out.println("(p) - Print list");
-        System.out.println("(l) - Length");
-        System.out.println("(t) - Print reverse");
-        System.out.println("(r) - Reverse list");
-        System.out.println("(b) - Delete Subsection");
-        System.out.println("(s) - Swap Alternate");
-        System.out.println("(q) - Quit program");
-
-
-        System.out.print("Enter a command: ");
-        String inputCommand = scanner.nextLine();
-        T itemType = null;
         //while loop
         while (!inputCommand.equals("" + QUIT)) {
             boolean correctCommand = true;
@@ -142,78 +155,12 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
                 }
                 break;
 
-                //s command
-            case "" + SEARCH:
-                System.out.print("Enter a number to search: ");
-                itemtype = new ItemType(Integer.parseInt(scanner.nextLine()));
-                System.out.print("Original list: ");
-                list.printList();
-                if (list.getLength() == 0) {
-                    System.out.println("The list is empty");
-                } else if (list.searchItem(itemtype) == -1) {
-                    System.out.println("Item is not present in the list");
-                } else {
-                    System.out.println("The item is present at index " + list.searchItem(itemtype));
-                }
-                break;
-                //n command
-            case "" + GET_NEXT:
-                list.getNextItem();
-                break;
-
                 //r command
             case "" + RESET_LIST:
                 list.resetList();
                 System.out.println("Iterator is reset");
                 break;
 
-                //a command
-            case "" + DEL_ALT:
-                System.out.print("Original list: ");
-                list.printList();
-                newList = list.deleteAlternateNodes(list);
-                System.out.print("New list: ");
-                newList.printList();
-                break;
-
-                //m command
-            case "" + MERGE:
-                System.out.print("Enter the length of the new list: ");
-                int length = scanner.nextInt();
-                System.out.print("Enter the numbers: ");
-                SortedLinkedList mergeList = new SortedLinkedList();
-                for (int i = 0; i < length; i++) {
-                    mergeList.insertItem(new ItemType(scanner.nextInt()));
-                }
-
-                System.out.print("The list 1: ");
-                list.printList();
-                System.out.print("The list 2: ");
-                mergeList.printList();
-                mergeList = list.mergeList(list, mergeList);
-                System.out.print("Merged list: ");
-                mergeList.printList();
-                scanner.nextLine();
-                break;
-
-                //t command
-            case "" + INTERSECTION:
-                System.out.print("Enter the length of the new list: ");
-                int numLength = scanner.nextInt();
-                System.out.print("Enter the numbers: ");
-                newList = new SortedLinkedList();
-                for (int i = 0; i < numLength; i++) {
-                    newList.insertItem(new ItemType(scanner.nextInt()));
-                }
-                System.out.print("The list 1: ");
-                list.printList();
-                System.out.print("The list 2: ");
-                newList.printList();
-                System.out.print("Intersection of lists: ");
-                SortedLinkedList intersectionList = list.intersection(list, newList);
-                intersectionList.printList();
-                scanner.nextLine();
-                break;
                 //p command
             case "" + PRINT_ALL:
                 System.out.print("The list is: ");
@@ -246,5 +193,23 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
                 System.out.println("Exiting the program...");
             }//if
         } // while
+        }
+
     }
+    private static <T> T parseItem(String item, Class<T> type) {
+        try {
+            if (type == Integer.class) {
+                return type.cast(Integer.valueOf(item));
+            } else if (type == Double.class) {
+                return type.cast(Double.valueOf(item));
+            } else if (type == String.class) {
+                return type.cast(item);
+            } else {
+                throw new IllegalArgumentException("Invalid type.");
+            }
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException("Invalid item value in the file.", ex);
+        }
+        */
+
 }
