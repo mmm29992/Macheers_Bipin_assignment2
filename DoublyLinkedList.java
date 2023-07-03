@@ -1,6 +1,4 @@
-import java.util.NoSuchElementException;
-
-import org.w3c.dom.Node;
+import java.util.NoSuchElementException; 
 
 
 public class DoublyLinkedList<T extends Comparable<T>> {
@@ -186,7 +184,15 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     
     public void reverseList()
     {
-
+        NodeType<T> prev = null;
+        
+        while (head != null) 
+        {
+            head.next = prev;
+            head.back = head.next;
+            prev = head;
+            head = head.next; 
+        }
     }
 
     public void swapAlternate() 
