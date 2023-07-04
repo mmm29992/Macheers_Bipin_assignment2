@@ -28,6 +28,8 @@ public class MichaelDriver<T extends Comparable<T>> {
     public static void main(String[] args) {
 
         DoublyLinkedList<Integer> intList = new DoublyLinkedList<>();
+        DoublyLinkedList<String> stringList = new DoublyLinkedList<>();
+        DoublyLinkedList<Double> doubleList = new DoublyLinkedList<>();
 
 
         // Check if a command-line argument was provided
@@ -52,7 +54,14 @@ public class MichaelDriver<T extends Comparable<T>> {
             Scanner inputScanner = new Scanner(System.in);
             String dataType = inputScanner.nextLine();
 
-            String inputCommand = "";
+            intDoublyLinkedList();
+
+        }
+    }
+
+    public static void intDoublyLinkedList()
+    {
+String inputCommand = "";
             while (!inputCommand.equals("" + QUIT)) 
             {
                 boolean correctCommand = true;
@@ -113,11 +122,36 @@ public class MichaelDriver<T extends Comparable<T>> {
                                 intList.printReverse();
                                 break;
                             case "" + REVERSE:
+                                System.out.print("The original list: ");
+                                intList.print();
                                 System.out.print("The reverse list: ");
                                 intList.reverseList();
                                 intList.print();
                                 break;
                             case "" + DELETE_SUB:
+                                System.out.print("Enter the lower bound: ");
+                                int lowerBound = inputScanner.nextInt();
+                                System.out.print("Enter the upper bound: ");
+                                int upperBound = inputScanner.nextInt();
+                                intList.deleteSubsection(upperBound, lowerBound);
+                                System.out.print("The original list: ");
+                                intList.print();
+                                System.out.print("The reverse list is: ");
+                                intList.printReverse();
+                                break;
+                            case "" + SWAP_ALT:
+                                System.out.print("The original list: ");
+                                intList.print();
+                                System.out.print("The modidied list: ");
+                                intList.swapAlternate();
+                                intList.print();
+                                System.out.print("The reverse list: ");
+                                intList.printReverse();
+                                break;
+                            case "" + QUIT:
+                                System.out.println("Exiting the program...");
+                                break;
+
                                 
 
 
@@ -152,7 +186,5 @@ public class MichaelDriver<T extends Comparable<T>> {
                     System.out.println("Exiting the program...");
                 }
             }
-
-        }
     }
 }
