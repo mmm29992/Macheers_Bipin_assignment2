@@ -25,7 +25,6 @@ public class DoublyLinkedList<T extends Comparable<T>> {
      */
     public void insertItem(T item) {
 
-
         NodeType<T> newNode = new NodeType<>();
         NodeType<T> temp = head;
         newNode.info = item;
@@ -67,20 +66,18 @@ public class DoublyLinkedList<T extends Comparable<T>> {
      * @param item the item to be deleted
      * @throws NoSuchElementException if the item is not found in the linked list.
      */
-    public void deleteItem(T item)
-    {
+    public void deleteItem(T item) {
         NodeType<T> temp = searchItem(item);
 
-        if (length() == 1)
-        {
+        if (length() == 1) {
             head = null;
-            return;  
-        } else if (temp.back == null)  // deleting the first item
+            return;
+        } else if (temp.back == null) // deleting the first item
         {
             NodeType<T> front = temp.next;
             front.back = null;
             head = front;
-        } else if ( temp.next == null) // delete last item
+        } else if (temp.next == null) // delete last item
         {
             NodeType<T> back = temp.back;
             back.next = null;
@@ -100,8 +97,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
      * @return the node containing the item if found \
      * @throws NoSuchElementException if the item is not found in the linked list.
      */
-    public NodeType<T> searchItem(T item)
-    {
+    public NodeType<T> searchItem(T item) {
         NodeType<T> temp = head;
         while (temp != null) {
             if (temp.info.compareTo(item) != 0 && temp.next != null) {
@@ -117,12 +113,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
     /**
      *  Searches for an item in the list and returns a boolean indicating its presence.
-     * 
+     *
      * @param item
      * @return true if the item is found in the list, false otherwise;
      */
-    public boolean searchItemBoolean(T item) 
-    {
+    public boolean searchItemBoolean(T item) {
         NodeType<T> temp = head;
         while (temp != null) {
             if (temp.info.compareTo(item) != 0 && temp.next != null) {
@@ -135,14 +130,13 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
         return true;
     }
-    
+
     /**
      *  Returns the number of elements in the linked list
      *
      * @return the number of elements in the linked list
      */
-    public int length()
-    {
+    public int length() {
         int count = 0;
         NodeType<T> temp = head;
         while (temp != null) {
@@ -158,8 +152,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
      * they appear in the list.
      * A line break is added after printing out all the elements.
      */
-    public void print()
-    {
+    public void print() {
         NodeType<T> temp = head;
         while (temp != null) {
             System.out.print(temp.info + " ");
@@ -174,10 +167,8 @@ public class DoublyLinkedList<T extends Comparable<T>> {
      * to their original order in the list.
      * A line brealk is added after printing all the elements.
      */
-    public void printReverse()
-    {
-        if (length() == 0)
-        {
+    public void printReverse() {
+        if (length() == 0) {
             System.out.print(" ");
             return;
         }
@@ -200,8 +191,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
      * @param upperBound
      * @param lowerBound
      */
-    public void deleteSubsection(T upperBound, T lowerBound)
-    {
+    public void deleteSubsection(T upperBound, T lowerBound) {
         NodeType<T> temp = head;
         while (temp != null) {
             if ((temp.info.compareTo(lowerBound) >= 0) && temp.info.compareTo(upperBound) <= 0) {
@@ -211,23 +201,19 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
     }
 
-    public void reverseList()
-    {
-        if (head == null)
-        {
+    public void reverseList() {
+        if (head == null) {
             return;
         }
         NodeType<T> prev = null;
         NodeType<T> nex = head.next;
-        
-        while (head != null) 
-        {
+
+        while (head != null) {
             head.next = prev;
             head.back = nex;
             prev = head;
             head = nex;
-            if (nex != null)
-            {
+            if (nex != null) {
                 nex = nex.next;
             }
         }
@@ -235,6 +221,26 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     }
 
     public void swapAlternate() {
-        while (head
+        if (length() == 0 || length() == 1 || length() == 2) {
+            return;
+        }
+        while (head != null && head.next != null) {
+            NodeType<T> nex = head.next;
+            NodeType<T> prev = head.back;
+            NodeType<T> twoNex = head.next.next;
+            head.next = nex.next;
+            head.back = nex;
+            if (prev != null) {
+                prev.next = nex;
+            } else {
+                nex.next = head;
+            }
+            nex.next = head;
+            nex.back = prev;
+            if (twoNex != null) {
+                twoNex.back = head;
+            }
+            head = twoNex;
+        }
     }
 }
