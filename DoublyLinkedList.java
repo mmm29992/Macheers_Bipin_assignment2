@@ -13,7 +13,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
      *
      * @param <T> the type of elements held in this DoublyLinkedlist
      */
-    DoublyLinkedList() {
+    public DoublyLinkedList() {
         head = null;
     }
 
@@ -226,7 +226,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             return;
         }
         NodeType<T> temp = head;
-
+        head = head.next;
         while (temp != null && temp.next != null) {
             NodeType<T> nex = temp.next;
             NodeType<T> prev = temp.back;
@@ -243,6 +243,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
                 twoNex.back = temp;
             }
             temp = twoNex;
+
         }
     }
 }
