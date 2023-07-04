@@ -248,26 +248,26 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     }
 
     public void swapAlternate() {
-        if (length == 0 || length == 1 || length == 2) {
+        if (length == 0 || length == 1) {
             return;
         }
-        while (head != null && head.next != null) {
-            NodeType<T> nex = head.next;
-            NodeType<T> prev = head.back;
-            NodeType<T> twoNex = head.next.next;
-            head.next = nex.next;
-            head.back = nex;
+        NodeType<T> temp = head;
+
+        while (temp != null && temp.next != null) {
+            NodeType<T> nex = temp.next;
+            NodeType<T> prev = temp.back;
+            NodeType<T> twoNex = temp.next.next;
+
+            temp.next = nex.next;
+            temp.back = nex;
             if (prev != null) {
                 prev.next = nex;
             }
-            else {
-                nex.next = head;
-            }
-            nex.next = head;
+            nex.next = temp;
             nex.back = prev;
             if (twoNex != null) {
-                twoNex.back = head;
+                twoNex.back = temp;
             }
-            head = twoNex;
+            temp = twoNex;
     }
 }

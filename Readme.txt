@@ -3,8 +3,6 @@
  Bipasha Bipin (bb84832@uga.edu)
  Michael Macheers (mmm29992@uga.edu)
 
-
-
 In the readme file give the pseudo code (steps) for your deleteSubsection operation. Using this
 pseudocode, explain the complexity (big O) of your deleteSubsection operation.
 
@@ -56,10 +54,9 @@ pseudocode, explain the complexity (big O) of your swapAlt operation.
       *head.back points to nex
       *however, if prev doesn't equal to null, then prev.next will point to nex
       *else head will be nex.next
-      *nex.next will
- 266             nex.next = head;
- 267             nex.back = prev;
- 268             if (twoNex != null) {
- 269                 twoNex.back = head;
- 270             }
- 271             head = twoNex;
+      *nex.next will point to head
+      *nex.back will point tp prev
+      *if twoNex does not equal null, then twoNex.back is set to head
+      *head is then set to twoNex
+
+      Big O- O(n)
