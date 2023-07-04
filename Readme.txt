@@ -43,3 +43,23 @@ In the readme file give the pseudo code (steps) for your swapAlt operation. Usin
 pseudocode, explain the complexity (big O) of your swapAlt operation.
 
       swapAlt():
+      *We first check if the list is either of length 0, 1, or 2.
+      *Returns if that condition is valid
+      *While loop begins
+      *Inside the condition, head and head.next cannot equal null
+      *while the condition applies, we create three new Nodes as pointers:
+      *nex which is set to the head.next
+      *prev which is set to head.back
+      *twoNex which is two nodes ahead of head
+      *then we begin swapping:
+      *head.next points to nex.next
+      *head.back points to nex
+      *however, if prev doesn't equal to null, then prev.next will point to nex
+      *else head will be nex.next
+      *nex.next will
+ 266             nex.next = head;
+ 267             nex.back = prev;
+ 268             if (twoNex != null) {
+ 269                 twoNex.back = head;
+ 270             }
+ 271             head = twoNex;

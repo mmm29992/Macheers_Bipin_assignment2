@@ -74,10 +74,10 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         if (length() == 1)
         {
             head = null;
-<<<<<<< HEAD
+
 } else if (temp.back == null)  // deleting the first item
 =======
-            return;  
+            return;
         } else if (temp.back == null)  // deleting the first item
 >>>>>>> be8324298b2ddccaa18f6bc79f75b1181c940d13
         {
@@ -121,11 +121,11 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
     /**
      *  Searches for an item in the list and returns a boolean indicating its presence.
-     * 
+     *
      * @param item
      * @return true if the item is found in the list, false otherwise;
      */
-    public boolean searchItemBoolean(T item) 
+    public boolean searchItemBoolean(T item)
     {
         NodeType<T> temp = head;
         while (temp != null) {
@@ -139,7 +139,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         }
         return true;
     }
-    
+
     /**
      *  Returns the number of elements in the linked list
      *
@@ -227,8 +227,8 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         while (head != null)
 =======
         NodeType<T> nex = head.next;
-        
-        while (head != null) 
+
+        while (head != null)
 >>>>>>> be8324298b2ddccaa18f6bc79f75b1181c940d13
         {
             head.next = prev;
@@ -248,6 +248,26 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     }
 
     public void swapAlternate() {
-        while (head
+        if (length == 0 || length == 1 || length == 2) {
+            return;
+        }
+        while (head != null && head.next != null) {
+            NodeType<T> nex = head.next;
+            NodeType<T> prev = head.back;
+            NodeType<T> twoNex = head.next.next;
+            head.next = nex.next;
+            head.back = nex;
+            if (prev != null) {
+                prev.next = nex;
+            }
+            else {
+                nex.next = head;
+            }
+            nex.next = head;
+            nex.back = prev;
+            if (twoNex != null) {
+                twoNex.back = head;
+            }
+            head = twoNex;
     }
 }
