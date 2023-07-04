@@ -1,6 +1,5 @@
 import java.util.NoSuchElementException;
 
-
 public class DoublyLinkedList<T extends Comparable<T>> {
     private NodeType<T> head;
 
@@ -112,7 +111,8 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     }
 
     /**
-     *  Searches for an item in the list and returns a boolean indicating its presence.
+     * Searches for an item in the list and returns a boolean indicating its
+     * presence.
      *
      * @param item
      * @return true if the item is found in the list, false otherwise;
@@ -132,7 +132,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     }
 
     /**
-     *  Returns the number of elements in the linked list
+     * Returns the number of elements in the linked list
      *
      * @return the number of elements in the linked list
      */
@@ -163,7 +163,8 @@ public class DoublyLinkedList<T extends Comparable<T>> {
 
     /**
      * Prints the elements of the linked list in reverse order to the console.
-     * The elements are seperated by a space and are printed in reverse order compared
+     * The elements are seperated by a space and are printed in reverse order
+     * compared
      * to their original order in the list.
      * A line brealk is added after printing all the elements.
      */
@@ -221,11 +222,7 @@ public class DoublyLinkedList<T extends Comparable<T>> {
     }
 
     public void swapAlternate() {
-<<<<<<< HEAD
-        if (length == 0 || length == 1) {
-=======
-        if (length() == 0 || length() == 1 || length() == 2) {
->>>>>>> a5ed7661178cf9cdbeeb687b3528f197a7b51c09
+        if (length() == 0 || length() == 1) {
             return;
         }
         NodeType<T> temp = head;
@@ -239,24 +236,13 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             temp.back = nex;
             if (prev != null) {
                 prev.next = nex;
-<<<<<<< HEAD
             }
             nex.next = temp;
-=======
-            } else {
-                nex.next = head;
-            }
-            nex.next = head;
->>>>>>> a5ed7661178cf9cdbeeb687b3528f197a7b51c09
             nex.back = prev;
             if (twoNex != null) {
                 twoNex.back = temp;
             }
-<<<<<<< HEAD
             temp = twoNex;
-=======
-            head = twoNex;
         }
->>>>>>> a5ed7661178cf9cdbeeb687b3528f197a7b51c09
     }
 }

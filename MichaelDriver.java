@@ -173,7 +173,7 @@ public class MichaelDriver<T extends Comparable<T>> {
     }
 
     public static void stringDoublyLinkedList(Scanner scanner, Scanner scanFile, Scanner inputScanner) {
-        DoublyLinkedList<Striing> stringList = new DoublyLinkedList<>();
+        DoublyLinkedList<String> stringList = new DoublyLinkedList<>();
         String inputCommand = "";
         while (!inputCommand.equals("" + QUIT)) {
             boolean correctCommand = true;
@@ -185,7 +185,7 @@ public class MichaelDriver<T extends Comparable<T>> {
             switch (inputCommand) {
                 case "" + PRINT:
                     System.out.print("The list is : ");
-                    StringList.print();
+                    stringList.print();
                     break;
 
                 case "" + PRINT_REV:
