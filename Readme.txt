@@ -1,1 +1,45 @@
 # Macheers_Bipin_assignment2
+
+ Bipasha Bipin (bb84832@uga.edu)
+ Michael Macheers (mmm29992@uga.edu)
+
+
+
+In the readme file give the pseudo code (steps) for your deleteSubsection operation. Using this
+pseudocode, explain the complexity (big O) of your deleteSubsection operation.
+
+    deleteSubsection():
+    *First a new node is created
+    *Node points to head called 'temp'
+    *While loop begins
+    *Inside while condtion, continues as long as temp is not equal to null
+    *If block begins with condition to find if the value contained in temp
+    compared to the lower range parameter is greater than or equal to 0 or if the value contained in temp
+    compared to the upper range provided parameter is greater than or equal to 0.
+    *If this condition is passed, then the deleteItem method is called and deletes the value.
+    *the temp is moved  to the next node
+
+    Big O- O(n^2)
+
+
+In the readme file give the pseudo code (steps) for your reverseList operation. Using this
+pseudocode, explain the complexity (big O) of your reverseList operation.
+
+    reverseList():
+    *The program returns if the head is equal to null
+    *First a new node is created called prev which is set to null
+    *New node nex which is set to the next node after head
+    *The node that is created is called prev that is initialized to null
+    *While loop begins
+    *Inside while condition, continues as long as head is not equal to null
+    *The next node after head is pointing to the new node that was created, prev
+    *The node behind head is pointing to the variable nex
+    *prev node is pointing to head
+    *head is pointing to the next head
+
+    Big O- O(n)
+
+In the readme file give the pseudo code (steps) for your swapAlt operation. Using this
+pseudocode, explain the complexity (big O) of your swapAlt operation.
+
+      swapAlt():

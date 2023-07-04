@@ -40,11 +40,13 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
                 System.out.print("Enter list type (i - int, d - double, s - string): ");
                 Scanner inputScanner = new Scanner(System.in);
                 String inputListType = inputScanner.nextLine();
-                String line;
                 if (inputListType.equals("" + INT)) {
                     DoublyLinkedList<Integer> list = new DoublyLinkedList<Integer>();
                     while (fileScanner.hasNextLine()) {
-                        line = fileScanner.nextLine();
+                        int line = fileScanner.nextInt();
+                        NodeType<Integer> nodeTypeValue = new NodeType<>();
+                        list.insertItem(nodeTypeValue);
+
                         while (true) {
                             System.out.println("Commands:\n");
                             System.out.println("(i) - Insert value");
@@ -65,8 +67,8 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
                                 case "i":
                                     System.out.println("The list is: " + line);
                                     System.out.print("Enter a value to insert: ");
-                                    Integer inputValue = Integer.parseInt(inputScanner.nextLine());
-                                    list.insertItem(inputValue);
+                                    Integer inputValue = Integer.parseInt(inputScanner.nextInt());
+                                    list.insertItem(nodeTypeValue.info);
                                     System.out.print("The list is: ");
                                     list.print();
                                     System.out.print("The reverse list: ");
@@ -76,7 +78,7 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
                                     System.out.println("The list is: " + line);
                                     System.out.print("Enter a number to delete: ");
                                     Integer deletedValue =
-                                        Integer.parseInt(inputScanner.nextLine());
+                                        Integer.parseInt(inputScanner.nextInt());
                                     list.deleteItem(deletedValue);
                                     System.out.print("The list is: ");
                                     list.print();
@@ -84,14 +86,28 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
                                     list.printReverse();
                                     System.out.println("The item is not present in the list");
                                     break;
+                                case "p":
+                                    System.out.println("The list is: " + line);
+                                case "l":
+                                    System.out.print("The length of the list is ");
+                                    list.length();
+                                case "t":
+                                    System.out.print("The reverse list: ");
+                                    list.printReverse();
+
                                 }
                             }
                         }
                     }
+                }
+                    /*
                 } else if (inputListType.equals("" + DOUBLE)) {
                     DoublyLinkedList<Double> list = new DoublyLinkedList<Double>();
                     while (fileScanner.hasNextLine()) {
-                        line = fileScanner.nextLine();
+                        int line = fileScanner.nextDouble();
+                        NodeType<Double> nodeTypeValue = new NodeType<>();
+                        list.insertItem(nodeTypeValue);
+
                         while (true) {
                             System.out.println("Commands:\n");
                             System.out.println("(i) - Insert value");
@@ -113,7 +129,8 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
                                 case "i":
                                     System.out.println("The list is: " + line);
                                     System.out.print("Enter a value to insert: ");
-                                    Double inputValue = inputScanner.nextDouble();
+                                    Double inputValue =
+                                        Double.parseDouble(inputScanner.nextDouble());
                                     list.insertItem(inputValue);
                                     System.out.print("The list is: ");
                                     list.print();
@@ -127,7 +144,9 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
                 } else if (inputListType.equals("" + STRING)) {
                     DoublyLinkedList<String> list = new DoublyLinkedList<String>();
                     while (fileScanner.hasNextLine()) {
-                        line = fileScanner.nextLine();
+                        String line = fileScanner.next();
+                        NodeType<String> nodeTypeValue = new NodeType<>();
+                        list.insertItem(nodeTypeValue);
                         while (true) {
                             System.out.println("Commands:\n");
                             System.out.println("(i) - Insert value");
@@ -160,7 +179,7 @@ public class DoublyLinkedListDriver<T extends Comparable<T>> {
                             }
                         }
                     }
-                } else {
+                    } */else {
                     System.out.println("Invalid list type. Please try again.");
                     inputListType = inputScanner.nextLine();
                 }
