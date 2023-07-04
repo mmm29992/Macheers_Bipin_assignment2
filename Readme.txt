@@ -3,6 +3,12 @@
  Bipasha Bipin (bb84832@uga.edu)
  Michael Macheers (mmm29992@uga.edu)
 
+ compile and run instructions: 
+
+ run script: $ ./script2.sh
+ only runs the int text file. You will have to switch the file to run with the double and string text files. 
+
+
 In the readme file give the pseudo code (steps) for your deleteSubsection operation. Using this
 pseudocode, explain the complexity (big O) of your deleteSubsection operation.
 
