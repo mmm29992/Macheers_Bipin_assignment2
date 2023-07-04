@@ -161,7 +161,6 @@ public class MichaelDriver<T extends Comparable<T>> {
                 System.out.println("(s) - Swap Alternate");
                 System.out.println("(q) - Quit program");
                 System.out.print("Enter a command: ");
-                inputCommand = scanner.nextLine();
             } else {
                 System.out.print("Invalid command try again: ");
             }
