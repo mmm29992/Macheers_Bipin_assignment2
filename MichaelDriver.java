@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,6 +26,9 @@ public class MichaelDriver<T extends Comparable<T>> {
      * Start of main method.
      */
     public static void main(String[] args) {
+
+        DoublyLinkedList<Integer> intList = new DoublyLinkedList<>();
+
 
         // Check if a command-line argument was provided
         if (args.length > 0) 
@@ -54,26 +58,71 @@ public class MichaelDriver<T extends Comparable<T>> {
                 boolean correctCommand = true;
                 switch (dataType) {
                     case "" + INT:
-                        DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
                         while (scanFile.hasNext()) {
                             int fileItems = scanFile.nextInt();
-                            list.insertItem(fileItems);
+                            intList.insertItem(fileItems);
                             
 
                         }
                         switch (inputCommand) {
                             case "" + PRINT:
-                                System.out.print("The list is: ");
-                                list.print();
+                                System.out.print("The list is : ");
+                                intList.print();
                                 break;
                                 
                             case "" + PRINT_REV:
                                 System.out.print("The reverse list: ");
-                                list.printReverse();
+                                intList.printReverse();
                                 break;
                             case "" + LENGTH:
-                                System.out.println("The length of the list is " + list.length());
-                                break; 
+                                System.out.println("The length of the list is " + intList.length());
+                                break;
+                            case "" + INSERT:
+                                System.out.print("The list is : ");
+                                intList.print();
+                                System.out.print("Enter a number to insert: ");
+                                int input = inputScanner.nextInt();
+                               
+                                    if (!intList.searchItemBoolean(input))
+                                    {
+                                        intList.insertItem(input);
+                                    } else 
+                                    {
+                                    System.out.println("Item already exists");
+                                    }
+                                System.out.print("The list is : ");
+                                intList.print();
+                                System.out.print("The reverse list: ");
+                                intList.printReverse();
+                                break;
+                            case "" + DELETE:
+                                System.out.print("The list is : ");
+                                intList.print();
+                                System.out.print("Enter a number to delete: ");
+                                input = inputScanner.nextInt();
+                                try 
+                                {
+                                intList.deleteItem(input);
+                                } catch (NoSuchElementException x)
+                                {
+                                System.out.println("The item is not present in the list");
+                                }
+                                System.out.print("The list is : ");
+                                intList.print();
+                                System.out.print("The reverse list: ");
+                                intList.printReverse();
+                                break;
+                            case "" + REVERSE:
+                                System.out.print("The reverse list: ");
+                                intList.reverseList();
+                                intList.print();
+                                break;
+                            case "" + DELETE_SUB:
+                                
+
+
+
+                                
                             
                         }
                         break;
