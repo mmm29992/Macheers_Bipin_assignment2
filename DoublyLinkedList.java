@@ -74,12 +74,8 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         if (length() == 1)
         {
             head = null;
-<<<<<<< HEAD
-} else if (temp.back == null)  // deleting the first item
-=======
             return;  
         } else if (temp.back == null)  // deleting the first item
->>>>>>> be8324298b2ddccaa18f6bc79f75b1181c940d13
         {
             NodeType<T> front = temp.next;
             front.back = null;
@@ -222,27 +218,18 @@ public class DoublyLinkedList<T extends Comparable<T>> {
             return;
         }
         NodeType<T> prev = null;
-<<<<<<< HEAD
-
-        while (head != null)
-=======
         NodeType<T> nex = head.next;
         
         while (head != null) 
->>>>>>> be8324298b2ddccaa18f6bc79f75b1181c940d13
         {
             head.next = prev;
             head.back = nex;
             prev = head;
-<<<<<<< HEAD
-            head = head.next;
-=======
             head = nex;
             if (nex != null)
             {
                 nex = nex.next;
             }
->>>>>>> be8324298b2ddccaa18f6bc79f75b1181c940d13
         }
         head = prev;
     }
