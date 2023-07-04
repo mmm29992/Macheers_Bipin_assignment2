@@ -137,7 +137,7 @@ public class MichaelDriver<T extends Comparable<T>> {
                 case "" + SWAP_ALT:
                     System.out.print("The original list: ");
                     intList.print();
-                    System.out.print("The modidied list: ");
+                    System.out.print("The modified list: ");
                     intList.swapAlternate();
                     intList.print();
                     System.out.print("The reverse list: ");
@@ -246,7 +246,7 @@ public class MichaelDriver<T extends Comparable<T>> {
                 case "" + SWAP_ALT:
                     System.out.print("The original list: ");
                     stringList.print();
-                    System.out.print("The modidied list: ");
+                    System.out.print("The modified list: ");
                     stringList.swapAlternate();
                     stringList.print();
                     System.out.print("The reverse list: ");
@@ -356,7 +356,7 @@ public class MichaelDriver<T extends Comparable<T>> {
                 case "" + SWAP_ALT:
                     System.out.print("The original list: ");
                     doubleList.print();
-                    System.out.print("The modidied list: ");
+                    System.out.print("The modified list: ");
                     doubleList.swapAlternate();
                     doubleList.print();
                     System.out.print("The reverse list: ");
